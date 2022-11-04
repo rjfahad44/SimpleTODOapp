@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ft.simpletodoapp.R
 import com.ft.simpletodoapp.interfaces.TodoInterface
@@ -54,9 +55,11 @@ class RvAdapter(
         if (todoModel.isCheck){
             holder.imageView.visibility = View.VISIBLE
             holder.title.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            holder.title.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.hint_text_color))
         }else{
             holder.imageView.visibility = View.INVISIBLE
             holder.title.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            holder.title.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.text_color))
         }
     }
 
