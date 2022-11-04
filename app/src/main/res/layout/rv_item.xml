@@ -46,7 +46,6 @@
                 android:src="@drawable/ic_done"
                 app:tint="@color/white" />
 
-
         </com.google.android.material.card.MaterialCardView>
 
     </RelativeLayout>
