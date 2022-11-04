@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Simple TODO app</string>
+    <string name="todo">Todo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_your_todo_name">Enter your todo name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes_discard">Yes Discard</string>
+    <string name="no_keep">No Keep</string>
+</resources>
