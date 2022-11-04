@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.ft.simpletodoapp.R
 import com.ft.simpletodoapp.data.model.TodoModel
 import com.ft.simpletodoapp.data.viewmodel.TodoViewModel
 import com.ft.simpletodoapp.databinding.FragmentAddEditBinding
@@ -38,24 +39,14 @@ class AddEditFragment : BottomSheetDialogFragment() {
             binding.tieTitle.setText("")
             dismiss()
         }
-
-
-        viewModal.model.observe(this){ updateTodo->
-            Log.d("UPDATE", "Success : ${updateTodo.title}")
-            binding.btnSave.text = "Update"
-            binding.tilTitle.hint = "Update your task name"
-            binding.tieTitle.setText(updateTodo.title)
-            binding.btnSave.setOnClickListener {
-                updateTodo.title = binding.tieTitle.text.toString()
-                viewModal.updateTodoItem(updateTodo)
-            }
-            binding.btnCancel.setOnClickListener { dismiss() }
-        }
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentAddEditBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun getTheme(): Int {
+        return R.style.BottomSheetFragmentTheme
     }
 }

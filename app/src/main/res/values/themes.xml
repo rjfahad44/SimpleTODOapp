@@ -13,5 +13,15 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <!-- Customize your theme here. -->
+
+        <item name="bottomSheetDialogTheme">@style/BottomSheetFragmentTheme</item>
+    </style>
+
+    <style name="BottomSheetFragmentTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/upper_corner_radius_20_dp</item>
     </style>
 </resources>

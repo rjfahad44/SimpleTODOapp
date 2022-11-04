@@ -3,10 +3,11 @@
     <string name="todo">Todo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="enter_your_task_name">Enter your task name</string>
+    <string name="enter_your_task_title">Enter your task title</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="yes_discard">Yes Discard</string>
     <string name="no_keep">No Keep</string>
     <string name="do_strike"><strike>StrikeThrough</strike> Using strike</string>
+    <string name="are_you_sure_you_want_to_discard_this_todo_item">Are you sure you want to discard this todo item</string>
 </resources>

@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="40dp"
-    android:layout_marginVertical="20dp"
     app:cardCornerRadius="15dp"
     app:cardElevation="0dp">
 
@@ -32,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="20dp"
-            android:text="Are you sure you want to discard this todo item"
+            android:text="@string/are_you_sure_you_want_to_discard_this_todo_item"
             android:textAlignment="center"
             android:textColor="@color/text_color"
             android:textSize="16sp"

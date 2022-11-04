@@ -2,9 +2,7 @@ package com.ft.simpletodoapp.ui
 
 import android.app.Dialog
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -15,13 +13,16 @@ import com.ft.simpletodoapp.data.model.TodoModel
 import com.ft.simpletodoapp.data.viewmodel.TodoViewModel
 import com.ft.simpletodoapp.databinding.ActivityMainBinding
 import com.ft.simpletodoapp.interfaces.TodoInterface
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+
 
 class MainActivity : AppCompatActivity(), TodoInterface.ItemClickInterface, TodoInterface.ItemCheckStateInterface,
     TodoInterface.ItemLongPressInterface {
 
     private lateinit var viewModal: TodoViewModel
     private lateinit var adapter: RvAdapter
-    private lateinit var dialog: Dialog
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,11 +51,6 @@ class MainActivity : AppCompatActivity(), TodoInterface.ItemClickInterface, Todo
         binding.floatingActionButton.setOnClickListener {
             AddEditFragment().show(supportFragmentManager, "newTodoItem")
         }
-
-        viewModal.model.observe(this){
-            Log.d("UPDATE", "Check : ${it.title}")
-        }
-
     }
 
     override fun onItemChecked(todoModel: TodoModel) {
@@ -62,7 +58,7 @@ class MainActivity : AppCompatActivity(), TodoInterface.ItemClickInterface, Todo
     }
 
     override fun onItemLongPress(todoModel: TodoModel) {
-        dialog = Dialog(this)
+        val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_item_delete)
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
@@ -77,7 +73,32 @@ class MainActivity : AppCompatActivity(), TodoInterface.ItemClickInterface, Todo
     }
 
     override fun onItemClick(todoModel: TodoModel) {
-        viewModal.model.value = todoModel
-        AddEditFragment().show(supportFragmentManager, "UpdateTodoItem")
+        showBottomSheetDialog(todoModel)
     }
+
+    private fun showBottomSheetDialog(todoModel: TodoModel) {
+        val bottomSheetDialog = BottomSheetDialog(this)
+        bottomSheetDialog.setContentView(R.layout.fragment_add_edit)
+        bottomSheetDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val title = bottomSheetDialog.findViewById<TextInputEditText>(R.id.tie_title)
+        val hintText = bottomSheetDialog.findViewById<TextInputLayout>(R.id.til_title)
+        val updateBtn = bottomSheetDialog.findViewById<Button>(R.id.btn_save)
+        val cancelBtn = bottomSheetDialog.findViewById<Button>(R.id.btn_cancel)
+
+        title?.setText(todoModel.title)
+        updateBtn?.text = "Update"
+        hintText?.hint = "Update your task title"
+
+        cancelBtn?.setOnClickListener { bottomSheetDialog.dismiss() }
+
+        updateBtn?.setOnClickListener {
+            todoModel.title = title?.text.toString()
+            viewModal.updateTodoItem(todoModel)
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetDialog.show()
+    }
+
 }

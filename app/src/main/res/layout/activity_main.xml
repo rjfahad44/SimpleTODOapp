@@ -33,7 +33,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:maxImageSize="40dp"
+        app:maxImageSize="35dp"
         app:tint="@color/white"
         android:contentDescription="@string/todo" />
 
