@@ -2,12 +2,10 @@ package com.ft.simpletodoapp.ui
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.ft.simpletodoapp.R
 import com.ft.simpletodoapp.data.model.TodoModel
 import com.ft.simpletodoapp.data.viewmodel.TodoViewModel
 import com.ft.simpletodoapp.databinding.FragmentAddEditBinding
@@ -17,6 +15,7 @@ class AddEditFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentAddEditBinding
     private lateinit var viewModal: TodoViewModel
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,13 +40,16 @@ class AddEditFragment : BottomSheetDialogFragment() {
         }
 
 
-        viewModal.model.observe(requireActivity()){ todoModel->
-            binding.tieTitle.setText(todoModel.title)
+        viewModal.model.observe(this){ updateTodo->
+            Log.d("UPDATE", "Success : ${updateTodo.title}")
             binding.btnSave.text = "Update"
+            binding.tilTitle.hint = "Update your task name"
+            binding.tieTitle.setText(updateTodo.title)
             binding.btnSave.setOnClickListener {
-                todoModel.title = binding.tieTitle.text.toString()
-                viewModal.updateTodoItem(todoModel)
+                updateTodo.title = binding.tieTitle.text.toString()
+                viewModal.updateTodoItem(updateTodo)
             }
+            binding.btnCancel.setOnClickListener { dismiss() }
         }
 
     }

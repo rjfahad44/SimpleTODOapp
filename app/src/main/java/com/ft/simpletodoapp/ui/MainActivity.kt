@@ -1,18 +1,20 @@
 package com.ft.simpletodoapp.ui
 
 import android.app.Dialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ft.simpletodoapp.R
-import com.ft.simpletodoapp.interfaces.TodoInterface
 import com.ft.simpletodoapp.adapter.RvAdapter
 import com.ft.simpletodoapp.data.model.TodoModel
 import com.ft.simpletodoapp.data.viewmodel.TodoViewModel
 import com.ft.simpletodoapp.databinding.ActivityMainBinding
+import com.ft.simpletodoapp.interfaces.TodoInterface
 
 class MainActivity : AppCompatActivity(), TodoInterface.ItemClickInterface, TodoInterface.ItemCheckStateInterface,
     TodoInterface.ItemLongPressInterface {
@@ -48,6 +50,11 @@ class MainActivity : AppCompatActivity(), TodoInterface.ItemClickInterface, Todo
         binding.floatingActionButton.setOnClickListener {
             AddEditFragment().show(supportFragmentManager, "newTodoItem")
         }
+
+        viewModal.model.observe(this){
+            Log.d("UPDATE", "Check : ${it.title}")
+        }
+
     }
 
     override fun onItemChecked(todoModel: TodoModel) {
@@ -70,7 +77,6 @@ class MainActivity : AppCompatActivity(), TodoInterface.ItemClickInterface, Todo
     }
 
     override fun onItemClick(todoModel: TodoModel) {
-        Log.d("TEST", "Check : ${todoModel.title}")
         viewModal.model.value = todoModel
         AddEditFragment().show(supportFragmentManager, "UpdateTodoItem")
     }

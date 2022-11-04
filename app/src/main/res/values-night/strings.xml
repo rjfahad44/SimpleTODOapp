@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="todo">Todo</string>
-    <string name="enter_your_todo_name">Enter your todo name</string>
+    <string name="enter_your_task_name">Enter your task name</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="yes_discard">Yes Discard</string>

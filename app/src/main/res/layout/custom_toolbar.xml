@@ -8,7 +8,6 @@
         android:id="@+id/imgBtn_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_menu"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -10,7 +10,6 @@ import com.ft.simpletodoapp.data.repository.TodoRepository
 class TodoViewModel(application: Application) : AndroidViewModel(application) {
 
     var model = MutableLiveData<TodoModel>()
-    var name = MutableLiveData<String>()
 
     private val repository: TodoRepository = TodoRepository(application)
     private val todoItems: LiveData<MutableList<TodoModel>> = repository.getAllTodoList()
