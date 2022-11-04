@@ -2,7 +2,7 @@
 
 ## Demo ScreenShots : 
 
-![](https://github.com/MohammadFahadAlam/SimpleTODOapp/tree/main/demo/screenshots_1)
-![](https://github.com/MohammadFahadAlam/SimpleTODOapp/tree/main/demo/screenshots_2)
-![](https://github.com/MohammadFahadAlam/SimpleTODOapp/tree/main/demo/screenshots_3)
-![](https://github.com/MohammadFahadAlam/SimpleTODOapp/tree/main/demo/screenshots_4)
+![](https://github.com/MohammadFahadAlam/SimpleTODOapp/blob/main/demo/screenshot_1.jpg)
+![](https://github.com/MohammadFahadAlam/SimpleTODOapp/blob/main/demo/screenshot_2.jpg)
+![](https://github.com/MohammadFahadAlam/SimpleTODOapp/blob/main/demo/screenshot_3.jpg)
+![](https://github.com/MohammadFahadAlam/SimpleTODOapp/blob/main/demo/screenshot_4.jpg)
